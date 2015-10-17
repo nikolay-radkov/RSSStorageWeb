@@ -18,6 +18,7 @@ class Subscribe extends React.Component {
   	}
   	submit() {
 	  	HttpService.get(this.state.value, function (rss) {
+	  		debugger;
 	  		StorageService.add(rss);
 	  	});
 		

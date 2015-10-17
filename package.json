@@ -15,8 +15,11 @@
   "dependencies": {
     "bootstrap": "^3.3.5",
     "bootstrap-sass": "^3.3.5",
+    "browserify-fs": "^1.0.0",
+    "feedme": "^0.3.0",
     "flux": "^2.1.1",
     "jquery-browserify": "^1.8.1",
+    "node-fs": "^0.1.7",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-router": "^1.0.0-rc3",

@@ -11,9 +11,16 @@ class Subscriptions extends React.Component {
 		}
 	}
 	render (argument) {
-		var content = this.state.subscriptions.map(function (subscription) {
-			return <h1 className="wix">{subscription.text}</h1>;
-		})
+
+		var content;
+		if (this.state.subscriptions) {
+			content = this.state.subscriptions.map(function (subscription) {
+				return <h1 className="wix">{subscription.text}</h1>;
+			})
+		} else {
+			content = <h1>No elements added yest</h1>;
+		}
+
 
 		return (
 			<div>{content}</div>
