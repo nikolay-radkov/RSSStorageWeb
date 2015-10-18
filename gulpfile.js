@@ -45,7 +45,7 @@ gulp.task('open', ['connect'], function() {
 
 gulp.task('watch', function() {
 	gulp.watch(config.paths.html, ['html']);
-	gulp.watch(config.paths.js, ['js', 'lint']); 
+	gulp.watch(config.paths.js, ['js']);
 	gulp.watch(config.paths.scss, ['scss']);
 });
 
@@ -81,7 +81,6 @@ gulp.task('lint', function() {
 gulp.task('js', function() {
 	return browserify(config.paths.mainInJs)
 		.transform(babelify)
-		.transform(reactify)
 		.bundle()
 		.pipe(source(config.paths.mainOutJs))
 		.pipe(gulp.dest(config.paths.dist + '/scripts'))

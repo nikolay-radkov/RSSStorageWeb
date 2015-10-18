@@ -1,5 +1,5 @@
 var React = require('react');
-var { Header } = require('./components')
+var { Header } = require('./common')
 
 const App = React.createClass({
 	render: function (argument) {

@@ -1,28 +1,13 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Router } from 'react-router';
+import routes from './routes';
+import InitializeActions from './actions/initializeActions';
 
-var { 
-  Router,
-	Route,
-  IndexRoute
-} = require('react-router');
-
-var {
-  App,
-  Subscriptions,
-  Subscribe,
-  Entries,
-  EntryInfo
-} = require('./views');
+InitializeActions.initApp();
 
 ReactDOM.render((
   <Router>
-    <Route path="/" component={App}>
-      <IndexRoute component={Subscriptions}/>
-      <Route path="subscribe" component={Subscribe}/>
-      <Route path="entries" component={Entries}/>
-      <Route path="entry-info/:id" component={EntryInfo}/>
-      <Route path="*" component={Subscriptions}/>
-    </Route>
+    {routes}
   </Router>
-  ), document.getElementById('root'))
+), document.getElementById('root'))
