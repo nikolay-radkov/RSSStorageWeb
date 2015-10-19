@@ -24,7 +24,7 @@ var EntryInfo = React.createClass({
 				<div>{ this.state.entry.publishedDate}</div>
 				
 				<a href={"https://www.facebook.com/sharer/sharer.php?u=" + window.location.href}>Share</a>
-				<div dangerouslySetInnerHTML={this.state.entry.conten} />
+				<div dangerouslySetInnerHTML={this.state} />
 			</div>
 		);
 	}

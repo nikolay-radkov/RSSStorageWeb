@@ -1,5 +1,5 @@
 var $ = require('jquery-browserify');
-var GOOGLE_FEED_API_URL =  "https://ajax.googleapis.com/ajax/services/feed/load?v=2.0&q=";
+var GOOGLE_FEED_API_URL =  "https://ajax.googleapis.com/ajax/services/feed/load?v=2.0&num=50&q=";
 var q = require('q');
 
 class HttpService { 
