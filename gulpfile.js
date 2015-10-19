@@ -18,6 +18,7 @@ var config = {
 	paths: {
 		html: './src/*.html',
 		js: './src/**/*.js',
+		images: './src/images/**',
 		dist: './dist',
 		scss: './src/scss/**/*.scss',
 		mainInJs: './src/index.js',
@@ -62,6 +63,13 @@ gulp.task('html', function() {
 		.on('error', console.error.bind(console));;
 });
 
+gulp.task('images', function() {
+	return gulp.src(config.paths.images)
+		.pipe(gulp.dest(config.paths.dist + '/images'))
+		.pipe(connect.reload())
+		.on('error', console.error.bind(console));;
+});
+
 gulp.task('scss', function() {
 	return gulp.src(config.paths.mainInScss)
 		.pipe(sass())
@@ -80,7 +88,7 @@ gulp.task('lint', function() {
 
 gulp.task('js', function() {
 	return browserify(config.paths.mainInJs)
-		.transform(babelify)
+		.transform(babelify.configure({ignore: "./node_modules/**"}))
 		.bundle()
 		.pipe(source(config.paths.mainOutJs))
 		.pipe(gulp.dest(config.paths.dist + '/scripts'))
@@ -88,4 +96,4 @@ gulp.task('js', function() {
 		.on('error', console.error.bind(console));
 });
 
-gulp.task('default', ['html', 'js', 'scss', 'lint', 'open', 'watch']);
+gulp.task('default', ['html', 'js', 'scss',  'images', 'lint', 'open', 'watch']);

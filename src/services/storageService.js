@@ -13,7 +13,7 @@ class StorageService  {
 	}
 	static setEntriesIndex(subscription) {
 		subscription.entries.sort(function(a, b){
-			return new Date(a.publishedDate) - new Date(b.publishedDate);
+			return new Date(b.publishedDate) - new Date(a.publishedDate);
 		});
 
 		for (var i = 0; i < subscription.entries.length; i++) {

@@ -2,6 +2,19 @@ var React = require('react');
 import SubscriptionStore from '../stores/subscriptionStore';
 import SubscriptionActions from '../actions/subscriptionActions';
 import { Link } from 'react-router';
+import { 
+	ListGroup,
+	ListGroupItem,
+	Grid,
+	Row,
+	Col,
+	Button
+} from 'react-bootstrap';
+
+import { 
+	PtrContainer, 
+	PtrStatus 
+} from 'react-ptrcontainer';
 
 var Subscriptions = React.createClass({
 	getInitialState: function() {
@@ -38,13 +51,23 @@ var Subscriptions = React.createClass({
 		var self = this;
 		if (this.state.subscriptions && this.state.subscriptions.length > 0) {
 			content = this.state.subscriptions.map(function (subscription) {
-				return <h1 key={subscription.id} className="wix">
-					<Link to={'/entries/' + subscription.id}>
-						{subscription.title}
-					</Link>
-					<strong>Last Updated: { subscription.entries[0].publishedDate }</strong>
-					<button onClick={self.deleteSubscription.bind(self, subscription.id)}>Delete</button>
-				</h1>;
+				return <ListGroupItem key={subscription.id} className="wix">
+					<Grid>
+						<Row>
+							<Col xs={9} md={9} lg={9}>
+								<Link to={'/entries/' + subscription.id}>
+									{subscription.title}
+								</Link>
+								<div>
+									<i>Last Updated: { subscription.entries[0].publishedDate }</i>
+								</div>
+							</Col>
+							<Col xs={3} md={3} lg={3} className="text-center">
+							 	<Button bsStyle="danger" bsSize="large" onClick={self.deleteSubscription.bind(self, subscription.id)}>Delete</Button>
+							</Col>
+						</Row>
+					</Grid>
+				</ListGroupItem>;
 			})
 		} else {
 			content = <h1>No elements added yest</h1>;
@@ -52,8 +75,10 @@ var Subscriptions = React.createClass({
 
 		return (
 			<div>
-				<button onClick={this.refresh}>Refresh</button>
-				{content}
+				<Button bsStyle="success" bsSize="large" onClick={this.refresh}>Refresh</Button>
+				<ListGroup>
+					{content}
+				</ListGroup>
 			</div>
 		);
 	}

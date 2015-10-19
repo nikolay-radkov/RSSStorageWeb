@@ -3,6 +3,14 @@ var React = require('react');
 import EntryStore from '../stores/entryStore';
 import SubscriptionActions from '../actions/subscriptionActions';
 import { Link } from 'react-router';
+import { 
+	ListGroup,
+	ListGroupItem,
+	Grid,
+	Row,
+	Col,
+	Button
+} from 'react-bootstrap';
 
 var Entries = React.createClass({
 	getInitialState: function() {
@@ -38,12 +46,14 @@ var Entries = React.createClass({
 		var self = this;
 		if (this.state.entries && this.state.entries.length > 0) {
 			content = this.state.entries.map(function (entry) {
-				return <h1 key={entry.id} className="wix">
+				return <ListGroupItem key={entry.id} >
 					<Link to={`/entry/${self.state.id + '|' + entry.id}`}>
 						{entry.title}
 					</Link>
-					<strong>{entry.publishedDate}</strong>
-				</h1>
+					<div>
+						<i>{entry.publishedDate}</i>
+					</div>
+				</ListGroupItem>
 			})
 		} else {
 			content = <h1>No elements added yet</h1>;
@@ -52,7 +62,7 @@ var Entries = React.createClass({
 		return (
 			<div>
 				<button onClick={this.refresh}>Refresh</button>
-				<div>{ content }</div>
+				<ListGroup>{ content }</ListGroup>
 			</div>
 		);
 	}
