@@ -11,11 +11,6 @@ import {
 	Button
 } from 'react-bootstrap';
 
-import { 
-	PtrContainer, 
-	PtrStatus 
-} from 'react-ptrcontainer';
-
 var Subscriptions = React.createClass({
 	getInitialState: function() {
 		var subscriptions = SubscriptionStore.getAll();
