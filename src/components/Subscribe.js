@@ -30,8 +30,8 @@ var Subscribe = React.createClass({
   		SubscriptionStore.removeChangeListener(this._onCreate);
   	},
   	_onCreate: function() {
-  		toastr.info('RSS added successfully');
-  		this.history.pushState(null, '/');
+  		toastr.success('RSS added successfully');
+  		this.history.pushState(null, 'subscriptions');
   	},
   	submit: function(event) {
   		event.preventDefault();

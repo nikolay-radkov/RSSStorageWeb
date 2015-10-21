@@ -29,7 +29,8 @@ var SubscriptionActions = {
 	    HttpService.get(subscription.feedUrl)
 	 		.then(function(updatedSubscription){
 	 			StorageService.update(updatedSubscription);
-
+	 			updatedSubscription.id = id;
+	 			
 	 			Dispatcher.dispatch({
 	 				actionType: ActionTypes.UPDATE_SUBSCRIPTION,
 	 				subscription: updatedSubscription

@@ -30,9 +30,9 @@ var Subscriptions = React.createClass({
 	},
 
 	componentDidMount:function() {
-        WebPullToRefresh.init( {
+        WebPullToRefresh.init({
             loadingFunction: this.refresh
-        } );
+        });
 	},
 
 	_onChange: function () {
@@ -40,6 +40,7 @@ var Subscriptions = React.createClass({
 	},
 
 	deleteSubscription: function (id) {
+		toastr.error('RSS deleted successfully');
 		SubscriptionActions.remove(id);
 	},
 
@@ -76,7 +77,7 @@ var Subscriptions = React.createClass({
 				</ListGroupItem>;
 			})
 		} else {
-			content = <h1>No elements added yest</h1>;
+			content = <h1>No elements added yet</h1>;
 		}
 
 		return (
