@@ -18,6 +18,7 @@ var config = {
 	paths: {
 		html: './src/*.html',
 		js: './src/**/*.js',
+		lib: './src/lib/**',
 		images: './src/images/**',
 		dist: './dist',
 		scss: './src/scss/**/*.scss',
@@ -48,6 +49,7 @@ gulp.task('watch', function() {
 	gulp.watch(config.paths.html, ['html']);
 	gulp.watch(config.paths.js, ['js']);
 	gulp.watch(config.paths.scss, ['scss']);
+	gulp.watch(config.paths.scss, ['images']);
 });
 
 gulp.task('clean', function() {
@@ -59,6 +61,13 @@ gulp.task('clean', function() {
 gulp.task('html', function() {
 	return gulp.src(config.paths.html)
 		.pipe(gulp.dest(config.paths.dist))
+		.pipe(connect.reload())
+		.on('error', console.error.bind(console));;
+});
+
+gulp.task('lib', function() {
+	return gulp.src(config.paths.lib)
+		.pipe(gulp.dest(config.paths.dist + '/lib'))
 		.pipe(connect.reload())
 		.on('error', console.error.bind(console));;
 });
@@ -96,4 +105,4 @@ gulp.task('js', function() {
 		.on('error', console.error.bind(console));
 });
 
-gulp.task('default', ['html', 'js', 'scss',  'images', 'lint', 'open', 'watch']);
+gulp.task('default', ['html', 'lib', 'js', 'scss',  'images', 'open', 'watch']);

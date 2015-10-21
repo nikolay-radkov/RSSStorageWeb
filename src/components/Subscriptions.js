@@ -16,6 +16,8 @@ import {
 	PtrStatus 
 } from 'react-ptrcontainer';
 
+import PullDownToRefresh from './common/PullDownToRefresh';
+
 var Subscriptions = React.createClass({
 	getInitialState: function() {
 		var subscriptions = SubscriptionStore.getAll();
@@ -32,6 +34,12 @@ var Subscriptions = React.createClass({
 		SubscriptionStore.removeChangeListener(this._onChange);
 	},
 
+	componentDidMount:function() {
+        WebPullToRefresh.init( {
+            loadingFunction: this.refresh
+        } );
+	},
+
 	_onChange: function () {
 		this.setState({ subscriptions: SubscriptionStore.getAll() });
 	},
@@ -40,10 +48,13 @@ var Subscriptions = React.createClass({
 		SubscriptionActions.remove(id);
 	},
 
-  	refresh: function(event) {
-  		event.preventDefault();
+  	refresh: function() {
+  		return new Promise( function( resolve, reject ) {
 
-		SubscriptionActions.updateAll();
+			SubscriptionActions.updateAll();
+
+			resolve();
+		});
   	},
 
 	render: function(argument) {
@@ -74,12 +85,7 @@ var Subscriptions = React.createClass({
 		}
 
 		return (
-			<div>
-				<Button bsStyle="success" bsSize="large" onClick={this.refresh}>Refresh</Button>
-				<ListGroup>
-					{content}
-				</ListGroup>
-			</div>
+			<PullDownToRefresh content={content} toRoute='/subscribe' message='Add subscription'/>
 		);
 	}
 });

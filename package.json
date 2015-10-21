@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "gulp default"
+    "start": "gulp default",
+    "install": "napa"
+  },
+  "napa": {
+    "../src/lib/web-pull-to-refresh": "apeatling/web-pull-to-refresh",
+    "../src/lib/toastr": "CodeSeven/toastr"
   },
   "repository": {
     "type": "git",
@@ -17,7 +22,6 @@
     "bootstrap-sass": "^3.3.5",
     "co": "^4.6.0",
     "flux": "^2.1.1",
-    "hammer": "0.0.5",
     "jquery-browserify": "^1.8.1",
     "lodash": "^3.10.1",
     "q": "^1.4.1",
@@ -42,6 +46,7 @@
     "gulp-open": "^1.0.0",
     "gulp-react": "^3.0.1",
     "gulp-sass": "^2.0.4",
+    "napa": "^2.0.1",
     "reactify": "^1.1.1",
     "vinyl-source-stream": "^1.1.0"
   }

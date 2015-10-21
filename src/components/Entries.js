@@ -12,6 +12,8 @@ import {
 	Button
 } from 'react-bootstrap';
 
+import PullDownToRefresh from './common/PullDownToRefresh';
+
 var Entries = React.createClass({
 	getInitialState: function() {
 		var id = parseInt(this.props.params.id, 10);
@@ -30,17 +32,28 @@ var Entries = React.createClass({
 		EntryStore.removeChangeListener(this._onChange);
 	},
 
+	componentDidMount:function() {
+        WebPullToRefresh.init( {
+            loadingFunction: this.refresh
+        } );
+	},
+
 	_onChange: function () {
 		var entries = EntryStore.getAllById(this.state.id);
 		this.setState({ entries: entries });
 	},
 
-	refresh: function(event) {
-		debugger;
-  		event.preventDefault();
+  	refresh: function() {
+  		var self = this;
 
-		SubscriptionActions.update(this.state.id);
+  		return new Promise( function( resolve, reject ) {
+
+			SubscriptionActions.update(self.state.id);
+
+			resolve();
+		});
   	},
+
 	render: function() {
 		var content;
 		var self = this;
@@ -60,10 +73,7 @@ var Entries = React.createClass({
 		}
 
 		return (
-			<div>
-				<button onClick={this.refresh}>Refresh</button>
-				<ListGroup>{ content }</ListGroup>
-			</div>
+			<PullDownToRefresh content={content} toRoute='/' message='Home' />
 		);
 	}
 });
