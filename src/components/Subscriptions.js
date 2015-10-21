@@ -11,11 +11,6 @@ import {
 	Button
 } from 'react-bootstrap';
 
-import { 
-	PtrContainer, 
-	PtrStatus 
-} from 'react-ptrcontainer';
-
 import PullDownToRefresh from './common/PullDownToRefresh';
 
 var Subscriptions = React.createClass({
