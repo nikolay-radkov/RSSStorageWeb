@@ -58,23 +58,19 @@ var Subscriptions = React.createClass({
 		var self = this;
 		if (this.state.subscriptions && this.state.subscriptions.length > 0) {
 			content = this.state.subscriptions.map(function (subscription) {
-				return <ListGroupItem key={subscription.id} className="wix">
-					<Grid>
-						<Row>
-							<Col xs={9} md={9} lg={9}>
-								<Link to={'/entries/' + subscription.id}>
-									{subscription.title}
-								</Link>
-								<div>
-									<i>Last Updated: { subscription.entries[0].publishedDate }</i>
-								</div>
-							</Col>
-							<Col xs={3} md={3} lg={3} className="text-center">
-							 	<Button bsStyle="danger" bsSize="large" onClick={self.deleteSubscription.bind(self, subscription.id)}>Delete</Button>
-							</Col>
-						</Row>
-					</Grid>
-				</ListGroupItem>;
+				return <div key={subscription.id} className="wix">
+					<div>
+						<Link to={'/entries/' + subscription.id}>
+							{subscription.title}
+						</Link>
+						<div>
+							<i>Last Updated: { subscription.entries[0].publishedDate }</i>
+						</div>
+					</div>
+					<div>
+					 	<Button bsStyle="danger" bsSize="large" onClick={self.deleteSubscription.bind(self, subscription.id)}>Delete</Button>
+					</div>
+				</div>;
 			})
 		} else {
 			content = <h1>No elements added yet</h1>;

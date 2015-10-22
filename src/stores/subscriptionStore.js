@@ -44,7 +44,6 @@ Dispatcher.register(function(action) {
 			SubscriptionStore.emitChange();
 			break;
 		case ActionTypes.UPDATE_SUBSCRIPTION :
-			debugger;
 			 var index = _.findIndex(_subscriptions, function(subscription) {
 			  	return subscription.id == action.subscription.id;
 			});

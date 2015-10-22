@@ -12,7 +12,7 @@ var {
 class PullDownToRefresh extends React.Component {
   render () {
     return (
-     <div>
+     <div className="rss-container">
         <div id="ptr">
               <span className="genericon genericon-next"></span>
 
@@ -26,9 +26,9 @@ class PullDownToRefresh extends React.Component {
          <div id="content">
               Pull down to refresh
             <Link to={this.props.toRoute} className="pull-left">{this.props.message}</Link>
-            <ListGroup>
+            <div className="elements">
               {this.props.content}
-            </ListGroup>
+            </div>
           </div>
       </div>
     );

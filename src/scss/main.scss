@@ -8,7 +8,44 @@
  }
 
 .landing {
-	background: url('../images/bg_3.png')
+	background: url('../images/bg_3.png');
+	background-size: cover;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-items: center;
+    height: 100%;
+
+    .header {
+    	flex: 2;
+    	display: flex;
+    	flex-direction: column;
+    	justify-content: center;
+
+    	h1 {
+    	   	font-family: 'Times New Roman';
+		    font-size: 110px;
+		    font-weight: bold;
+		    color: #FFFFFF;
+		    border: 10px solid transparent;
+		    padding: 0 20px;
+		    box-shadow: 0 0px 25px #5A6063;
+		    border-radius: 20px;
+		    text-shadow: 0 0 5px #5A6063;
+    	}
+    }
+
+    .footer {
+    	flex: 1;
+    	display: flex;
+    	flex-direction: column;
+    	justify-content: center;
+    }
+
+    .below-footer{
+    	flex: 1;
+    }
 }
 
  #ptr {
@@ -90,7 +127,6 @@
 	100% {
 		-webkit-transform: scale(1);
 		transform: scale(1);
-		background-color: #fff;
 		opacity: 1;
 	}
 }
@@ -105,18 +141,22 @@
 	100% {
 		-webkit-transform: scale(1);
 		transform: scale(1);
-		background-color: #fff;
 		opacity: 1;
 	}
 }
 
 #content {
-	background: #fff;
+	background: url('../images/iMac-trans_screen.png');
+	background-size: cover !important;
+    background-repeat: no-repeat;
+    background-position: center center;
 	min-height: 100%;
+	max-width: 800px;
+	margin: 0 auto;
 	z-index: 20;
 	-webkit-backface-visibility: hidden;
 	-webkit-perspective: 1000;
-	padding: 50px 20px;
+	padding: 50px 120px;
 	text-align: center;
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 24px;
@@ -138,4 +178,13 @@
 .ptr-loading #content {
 	-webkit-transform: translate3d( 0, 50px, 0 );
 	transform: translate3d( 0, 50px, 0 );
+}
+
+.list-group-item{
+	background-color: rgba(255,255,255, 0.3) !important;
+}
+
+.elements {
+	overflow-x: auto;
+	height: 45%;
 }
