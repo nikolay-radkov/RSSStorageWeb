@@ -1,6 +1,7 @@
 var React = require('react');
 import { Link } from 'react-router';
 import EntryStore from '../stores/entryStore';
+import { NormalLayout } from './common';
 
 import { 
 	ListGroup,
@@ -23,8 +24,7 @@ var EntryInfo = React.createClass({
 		}
 	},
 	render: function() {
-		return (
-			<div>
+		var content = <div>
 				<Jumbotron>
 					<h1>
 						<a href={ this.state.entry.link} >
@@ -38,7 +38,10 @@ var EntryInfo = React.createClass({
 					</Button>
 				</Jumbotron>
 				<div dangerouslySetInnerHTML={this.state} />
-			</div>
+			</div>;
+
+		return (
+			<NormalLayout content={content}/>
 		);
 	}
 }); 

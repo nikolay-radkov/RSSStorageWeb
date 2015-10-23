@@ -12,7 +12,7 @@ import {
 	Button
 } from 'react-bootstrap';
 
-import PullDownToRefresh from './common/PullDownToRefresh';
+import { PullDownLayout } from './common';
 
 var Entries = React.createClass({
 	getInitialState: function() {
@@ -73,7 +73,7 @@ var Entries = React.createClass({
 		}
 
 		return (
-			<PullDownToRefresh content={content} toRoute='/' message='Home' />
+			<PullDownLayout content={content} toRoute='/' message='Home' />
 		);
 	}
 });

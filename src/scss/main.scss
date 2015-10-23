@@ -144,25 +144,77 @@
 		opacity: 1;
 	}
 }
+.rss-container {
+	background: url('../images/wooden-table-1.jpg');
+	background-size: cover;
+
+	.pull-down {
+		position: absolute;
+		width: 100%;
+		text-align: center;
+		top: 0;
+		color: white;
+	}
+}
 
 #content {
-	background: url('../images/iMac-trans_screen.png');
-	background-size: cover !important;
-    background-repeat: no-repeat;
-    background-position: center center;
-	min-height: 100%;
+    box-sizing: border-box;
+    height: 100vh;
 	max-width: 800px;
+	min-width: 300px;
 	margin: 0 auto;
 	z-index: 20;
 	-webkit-backface-visibility: hidden;
 	-webkit-perspective: 1000;
-	padding: 50px 120px;
+	margin: 0 auto;
 	text-align: center;
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 24px;
 	font-weight: 200;
 	color: #555;
-	box-sizing: border-box;
+	padding: 20px 10px;
+
+	.image-responsive {
+		width: 100%;
+		height:  100%;
+	}
+	
+	.rss-top {
+    	height:33px;
+    	width: 100%;
+	}
+
+	.rss-bottom {
+  		width: 100%;
+	    height: 219px;
+	}
+
+	.rss-middle {
+		background-color: white;
+		display: flex;
+		flex-direction: row;
+
+		.rss-center {
+			flex: 1;
+		}
+
+		.rss-left, .rss-right {
+			width: 33px;
+		}
+
+		.rss-left {
+			background: url('../images/left-window.png');
+			background-size: cover !important;
+	    	background-repeat: no-repeat;
+		}
+
+		.rss-right {
+			background: url('../images/right-window.png');
+			background-size: cover !important;
+	    	background-repeat: no-repeat;
+		}
+	}
+
 }
 
 .ptr-loading #content, .ptr-reset #content,

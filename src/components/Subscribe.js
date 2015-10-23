@@ -12,6 +12,7 @@ import {
 
 import SubscriptionStore from '../stores/subscriptionStore';
 import SubscriptionActions from '../actions/subscriptionActions';
+import { NormalLayout } from './common';
 
 var Subscribe = React.createClass({
 	getInitialState: function() {
@@ -39,8 +40,7 @@ var Subscribe = React.createClass({
 		SubscriptionActions.create(this.state.url);
   	},
 	render: function(argument) {
-		return (
-			 <form>
+		var content = <form>
 				<Input
 			        type="text"
 			        value={this.state.url}
@@ -60,6 +60,8 @@ var Subscribe = React.createClass({
 					onClick={this.submit}
 		      		/>
 		     </form>
+		return (
+			<NormalLayout content={content}/>
 		);
 	}
 });

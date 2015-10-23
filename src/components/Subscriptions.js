@@ -11,7 +11,7 @@ import {
 	Button
 } from 'react-bootstrap';
 
-import PullDownToRefresh from './common/PullDownToRefresh';
+import { PullDownLayout } from './common';
 
 var Subscriptions = React.createClass({
 	getInitialState: function() {
@@ -77,7 +77,7 @@ var Subscriptions = React.createClass({
 		}
 
 		return (
-			<PullDownToRefresh content={content} toRoute='/subscribe' message='Add subscription'/>
+			<PullDownLayout content={content} toRoute='/subscribe' message='Add subscription'/>
 		);
 	}
 });
