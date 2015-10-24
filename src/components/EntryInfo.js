@@ -19,29 +19,50 @@ var EntryInfo = React.createClass({
 		var entryId = parseInt(ids[1], 10);
 		var entry = EntryStore.getById(subscriptionId,entryId);
 		return {
+			subscriptionId: subscriptionId,
+			entryId, entryId,
 			entry: entry,
 			__html: entry.content
 		}
 	},
 	render: function() {
 		var content = <div>
-				<Jumbotron>
+				<div className="entry-content">
 					<h1>
 						<a href={ this.state.entry.link} >
-						{ this.state.entry.title}
+							{ this.state.entry.title}
 						</a>
 					</h1>
-					<div>Author: { this.state.entry.author}</div>
-					<div>Published Date: { this.state.entry.publishedDate}</div>
-					
-					<Button bsStyle="success" bsSize="large"><a href={"https://www.facebook.com/sharer/sharer.php?u=" + this.state.entry.link} target="_blank">Share on Facebook</a>
-					</Button>
-				</Jumbotron>
+					<div className="entry-info">
+						<i>by <strong>{ this.state.entry.author}</strong> 
+						&nbsp;on&nbsp;<strong>{ new Date(this.state.entry.publishedDate).toLocaleString() }</strong>
+						</i>
+					</div>
+					<div className="social-sharing">
+						<a href={"https://www.facebook.com/sharer/sharer.php?u=" + this.state.entry.link} target="_blank">
+							<img src="./images/facebook.png"/>
+						</a>
+	
+						<a href={"https://plus.google.com/share?url=" + this.state.entry.link} target="_blank">
+							<img src="./images/google.png"/>
+						</a>
+						<a href={"https://twitter.com/home?status=" + this.state.entry.link} target="_blank">
+							<img src="./images/twitter.png"/>
+						</a>
+						<a href={"https://www.linkedin.com/shareArticle?mini=true&url=" + this.state.entry.link} target="_blank">
+							<img src="./images/linkedin.png"/>
+						</a>
+					</div>
+				</div>
 				<div dangerouslySetInnerHTML={this.state} />
 			</div>;
 
 		return (
-			<NormalLayout content={content}/>
+			<NormalLayout 
+				content={content}
+				toRoute={ '/entries/' + this.state.subscriptionId }
+				message="Back"
+				title='Entry Info'/>
 		);
 	}
 }); 

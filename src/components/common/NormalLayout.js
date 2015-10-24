@@ -19,7 +19,10 @@ class NormalLayout extends React.Component {
           </div>
           <div className="rss-middle">
             <div className="rss-left"></div>
-            <div className="rss-center">          
+            <div className="rss-center">
+              <div className="header">
+                <h1>{this.props.title}</h1>
+              </div>          
               <div className="elements">
                 {this.props.content}
               </div>

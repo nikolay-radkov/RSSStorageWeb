@@ -58,17 +58,25 @@ var Subscriptions = React.createClass({
 		var self = this;
 		if (this.state.subscriptions && this.state.subscriptions.length > 0) {
 			content = this.state.subscriptions.map(function (subscription) {
-				return <div key={subscription.id} className="wix">
-					<div>
-						<Link to={'/entries/' + subscription.id}>
+				var index = subscription.feedUrl.indexOf('//') + 2;
+				index = subscription.feedUrl.indexOf('/', index);
+				var url = subscription.feedUrl.substring(0, index);
+
+				return <div key={subscription.id} className="list-item">
+					<div className="info">
+						<img src={ url + "/favicon.ico" } className="favicon"/>
+						<Link to={'/entries/' + subscription.id} className="title">
 							{subscription.title}
 						</Link>
-						<div>
-							<i>Last Updated: { subscription.entries[0].publishedDate }</i>
+						<div className="link">
+							<i>Link:</i> <a href={subscription.feedUrl}>{subscription.feedUrl}</a>		
+						</div>
+						<div className="date">
+							<i>Updated at: { new Date(subscription.entries[0].publishedDate).toLocaleString() }</i>
 						</div>
 					</div>
-					<div>
-					 	<Button bsStyle="danger" bsSize="large" onClick={self.deleteSubscription.bind(self, subscription.id)}>Delete</Button>
+					<div className="buttons">
+					 	<Button bsStyle="danger" onClick={self.deleteSubscription.bind(self, subscription.id)}>Delete</Button>
 					</div>
 				</div>;
 			})
@@ -77,7 +85,11 @@ var Subscriptions = React.createClass({
 		}
 
 		return (
-			<PullDownLayout content={content} toRoute='/subscribe' message='Add subscription'/>
+			<PullDownLayout 
+				content={content} 
+				toRoute='/subscribe'
+				message='Add subscription'
+				title='Subscriptions'/>
 		);
 	}
 });

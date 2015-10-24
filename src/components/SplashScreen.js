@@ -45,7 +45,7 @@ var SplashScreen = React.createClass({
 				currentImage: images[index].src,
 				currentIndex: index
 			});
-		}, 200);
+		}, 170);
 
 		self.setState({
 			intervalId: intervalId

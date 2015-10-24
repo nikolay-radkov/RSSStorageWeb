@@ -40,28 +40,39 @@ var Subscribe = React.createClass({
 		SubscriptionActions.create(this.state.url);
   	},
 	render: function(argument) {
-		var content = <form>
-				<Input
-			        type="text"
-			        value={this.state.url}
-			        placeholder="http://your-web-site.com/rss"
-			        label="Enter the url of rss you want to store"
-			        bsStyle="success"
-			        ref="input"
-			        groupClassName="group-class"
-			        labelClassName="label-class"
-			        onChange={this.handleChange} 
-			    />
-		      	<ButtonInput 
-		      		type="submit" 
-		      		value="Add" 
-		      		bsStyle="success" 
-		      		bsSize="large"
-					onClick={this.submit}
-		      		/>
+		var content = <form className="subscribe">
+				<div className="logo">
+					<img src="./images/apple-icon.png"/>
+				</div>
+				<div>
+					<Input
+				        type="text"
+				        value={this.state.url}
+				        placeholder="http://your-web-site.com/rss"
+				        label="Enter the url of rss that you want to store"
+				        bsStyle="warning"
+				        ref="input"
+				        groupClassName="group-class"
+				        labelClassName="label-class"
+				        onChange={this.handleChange} 
+				    />
+			    </div>
+			    <div>
+			      	<ButtonInput 
+			      		type="submit" 
+			      		value="Add" 
+			      		bsStyle="info" 
+			      		bsSize="large"
+						onClick={this.submit}
+			      		/>
+	      		</div>
 		     </form>
 		return (
-			<NormalLayout content={content}/>
+			<NormalLayout 
+				content={content}
+				toRoute="/subscriptions" 
+				message="Home"
+				title="Subscribe"/>
 		);
 	}
 });

@@ -59,21 +59,29 @@ var Entries = React.createClass({
 		var self = this;
 		if (this.state.entries && this.state.entries.length > 0) {
 			content = this.state.entries.map(function (entry) {
-				return <ListGroupItem key={entry.id} >
-					<Link to={`/entry/${self.state.id + '|' + entry.id}`}>
-						{entry.title}
-					</Link>
-					<div>
-						<i>{entry.publishedDate}</i>
+				return <div key={entry.id} className="list-item text-center">
+					<div className="info">
+						<div className="title">
+							<Link to={`/entry/${self.state.id + '|' + entry.id}`}>
+								{entry.title}
+							</Link>
+						</div>
+						<div className="date">
+							<i>{ new Date(entry.publishedDate).toLocaleString() }</i>
+						</div>
 					</div>
-				</ListGroupItem>
+				</div>
 			})
 		} else {
 			content = <h1>No elements added yet</h1>;
 		}
 
 		return (
-			<PullDownLayout content={content} toRoute='/' message='Home' />
+			<PullDownLayout 
+				content={content} 
+				toRoute='/subscriptions' 
+				message='Home' 
+				title='Entries'/>
 		);
 	}
 });
